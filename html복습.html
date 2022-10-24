@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .text {
+            color:blue;
+        }
+        /* 스타일 지정 */
+    </style>
+</head>
+<body>
+    <div>div: 한 줄 다 차지</div> 
+    <div>div: 한 줄 다 차지</div> 
+    <div>div: 한 줄 다 차지</div> 
+    <div>div: 한 줄 다 차지</div> 
+    <div>div: 한 줄 다 차지</div> 
+    <span>span: 적은 부분만</span>
+    <span>span: 적은 부분만</span>
+    <span>span: 적은 부분만</span>
+
+    <p></p>
+
+
+    <!-- 테이블 -->
+    <tr></tr> 
+    
+
+    <ul>
+        <li></li>
+    </ul>
+
+    <a href=""></a>
+
+    <p class="text">스타일 적용</p>
+
+    <button id="btn1" class="btn">버튼</button>
+
+
+    <button onclick="change_text()">아래 글씨가 바뀝니다</button>
+    <p id="text1">안녕하세요!</p>
+ 
+    
+    <button onclick="change_text_by_class()">아래 글씨가 바뀝니다2</button>
+    <p class="my_text">클래스 접근도 되나요</p>
+    <p class="my_text">한번에 다 바뀌나요</p>
+    <p class="my_text">여기도 바뀌나요</p>
+    <!-- 바뀌지 않음. 리스트로 변경해주어야 함. -->
+
+    <!-- p#text1 자동완성 --> 
+    <!-- alt+shift+아래 키 : 아래로 복사 -->
+
+ 
+
+
+    <!-- alert_button()라는 함수를 자바스크립트로 만들어줌 -->
+    <button onclick="alert_button()">Alert 버튼</button>
+
+    <script>
+      function alert_button() {
+        alert('안녕하세요~')            
+      }
+
+      function change_text() {
+        document.getElementById('text1').innerText='버튼 클릭했다!'            
+      }
+
+      // function change_text_by_class() {
+      //   document.getElementsByClassName('my_text').innerText='되네요!'            
+      // }
+      // <!-- 바뀌지 않음. 리스트로 변경해주어야 함. -->
+      let click_cnt = 0;
+
+      function change_text_by_class() {  
+        document.getElementsByClassName('my_text')[click_cnt++].innerText='되네요!'            
+      }
+
+
+    </script>
+
+</body>
+</html>
