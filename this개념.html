@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    form {
+      background-color: green;
+      position: relative;
+      width: 150px;
+      height: 150px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    div {
+      background-color: blue;
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      width: 100px;
+      height: 100px;
+    }
+
+    p {
+      background-color: red;
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      width: 50px;
+      height: 50px;
+      line-height: 50px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <form>FORM 태그
+    <div>DIV 태그
+      <p>P 태그</p>
+    </div>
+  </form>
+
+  <script>
+    // (1)
+    const pTodo = function (event) {
+      console.log('pTodo')
+      console.log(`this = ${this} / event.target = ${event.target}`)
+    }
+
+    const divTodo = function (event) {
+      console.log('divTodo')
+      console.log(`this = ${this} / event.target = ${event.target}`)
+    }
+
+    const formTodo = function (event) {
+      console.log('formTodo')
+      console.log(`this = ${this} / event.target = ${event.target}`)
+    }
+
+// < pTag를 클릭했을 시 >
+// pTodo
+// this = [object HTMLParagraphElement] / event.target = [object HTMLParagraphElement]
+
+// divTodo
+// this = [object HTMLDivElement] / event.target = [object HTMLParagraphElement]
+
+// formTodo
+// this = [object HTMLFormElement] / event.target = [object HTMLParagraphElement]
+
+// this: 자기자신을 출력함 - 객체 내에 존재.
+
+// ----------------------------------------------------------------------------
+
+// (2)
+
+    const pTodo = function (event) {
+        console.log('pTodo')
+        console.log(`this = ${this} / event.target = ${event.target}`)
+        }
+
+    const divTodo = function (event) {
+        console.log('divTodo')
+        console.log(`this = ${this} / event.target = ${event.target}`)
+    }
+
+    const formTodo = (event) => {
+        console.log('formTodo')
+        console.log(`this = ${this} / event.target = ${event.target}`)
+    }
+
+
+// pTodo
+// this = [object HTMLParagraphElement] / event.target = [object HTMLParagraphElement]
+// divTodo
+// this = [object HTMLDivElement] / event.target = [object HTMLParagraphElement]
+// formTodo
+// this = [object Window] / event.target = [object HTMLParagraphElement]
+
+// 화살표 함수로 바꾼 formTodo만 this가 window로 바뀌었다. 
+// 화살표함수는 객체 내에 있을 때는 지양하는 것이 좋다. 화살표함수를 사용하면 상위 객체를
+// 지칭하게 됨
+    // 객체의 메서드에서 this 에 접근할 때는 화살표 함수 사용을 지양해야 한다
+    // ( 화살표 함수에서 this 는 한 단계 상위 객체를 참조하기 때문에 )
+
+
+    const pTag = document.querySelector('p')
+    const divTag = document.querySelector('div')
+    const formTag = document.querySelector('form')
+
+    pTag.addEventListener('click', pTodo)
+    divTag.addEventListener('click', divTodo)
+    formTag.addEventListener('click', formTodo)
+
+
+    
+  </script>
+</body>
+</html>
